@@ -58,7 +58,13 @@ class TemplateController extends Controller
 										->simplePaginate(2);										
 		 $bannersImages = GalleryImage::where('ref_class', 'Banners')
 										->latest()
-										->simplePaginate(2);		 
+										->simplePaginate(12);
+		 $featuresImages = GalleryImage::where('ref_class', 'Features')
+										->latest()
+										->simplePaginate(2);
+		 $carouselImages = GalleryImage::where('ref_class', 'Carousel')
+										->latest()
+										->simplePaginate(12);											
 		 $projectsImages = GalleryImage::where('ref_class', 'Projects')
 										->latest()
 										->simplePaginate(12);
@@ -85,7 +91,9 @@ class TemplateController extends Controller
 				'brandImage'=>$brandImage,
 				'aboutImage'=>$aboutImage,				
 				'servicesImages'=>$servicesImages,				
+				'featuresImages'=>$featuresImages,
 				'bannersImages'=>$bannersImages,
+				'carouselImages'=>$carouselImages,
 				'projectsImages'=>$projectsImages,
 				'projectTypesImages'=>$projectTypesImages,				
 				'testimonialsImages'=>$testimonialsImages,

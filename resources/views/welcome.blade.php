@@ -91,19 +91,34 @@
 						</div>						
 					</div>					
 					<div class="row">
-						<div class="col-lg-6 col-xl-7">
-							<div class="image-container">
-								<img class="img-fluid" src="img/hero-img1.png" alt="alternative">
-							</div> <!-- end of image-container -->
-						</div> <!-- end of col -->
-						<div class="col-lg-6 col-xl-5">
-							<div class="text-container">
-								<h2>Top Ranked Financial Services Provider In The Industry </h2>
-								<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
-									Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
-								</p>
-							</div> <!-- end of text-container -->
-						</div> <!-- end of col -->
+						@if($rtemplate['appDefaults']->count() == 0)	
+							<div class="col-lg-6 col-xl-7">
+								<div class="image-container">
+									<img class="img-fluid" src="img/hero-img1.png" alt="alternative">
+								</div> <!-- end of image-container -->
+							</div> <!-- end of col -->
+							<div class="col-lg-6 col-xl-5">
+								<div class="text-container">
+									<h2>{{$rtemplate['appDefaults']->appTitle}} </h2>
+									<p>{{$rtemplate['appDefaults']->aboutText}}
+									</p>
+								</div> <!-- end of text-container -->
+							</div> <!-- end of col -->
+						@else					
+							<div class="col-lg-6 col-xl-7">
+								<div class="image-container">
+									<img class="img-fluid" src="img/hero-img1.png" alt="alternative">
+								</div> <!-- end of image-container -->
+							</div> <!-- end of col -->
+							<div class="col-lg-6 col-xl-5">
+								<div class="text-container">
+									<h2>Top Ranked Financial Services Provider In The Industry </h2>
+									<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
+										Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
+									</p>
+								</div> <!-- end of text-container -->
+							</div> <!-- end of col -->
+						@endif
 					</div> <!-- end of row -->
 				</div> <!-- end of container -->
 			</div> <!-- end of basic-1 -->
@@ -122,36 +137,47 @@
           <div class="row align-items-center mt-5">
             <div class="col-md-5 col-lg-6 order-md-1 order-0"><img class="w-100" src="images/svg/illustrations/illustration-6.svg" alt="" /></div>
             <div class="col-md-7 col-lg-6 pe-lg-4 pe-xl-7">
-              <div class="d-flex align-items-start"><span class="flaticon-accountant"></span>
-                <div class="flex-1">
-                  <h5>Accounting</h5>
-                  <p class="text-muted mb-4">Beside the support we provide you with various tools to be able to host and manage your websites</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-start"><span class="flaticon-accounting-1"></span>
-                <div class="flex-1">
-                  <h5>Tax, Compliance & Payroll</h5>
-                  <p class="text-muted mb-4">Be able to customize your plan over time if needed so you pay only for what you use</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-start"><span class="flaticon-wealth"></span>
-                <div class="flex-1">
-                  <h5>Financial Services</h5>
-                  <p class="text-muted mb-4">We are the most reliable service provider, ready to give you a helping hand the fastest way possible 24/7</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-start"><span class="flaticon-teamwork"></span>
-                <div class="flex-1">
-                  <h5>Investment Portfolio</h5>
-                  <p class="text-muted mb-4">Beside the support we provide you with various tools to be able to host and manage your websites</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-start"><span class="flaticon-budget"></span>
-                <div class="flex-1">
-                  <h5>Growth &amp Funding Access</h5>
-                  <p class="text-muted mb-4">Be able to customize your plan over time if needed so you pay only for what you use</p>
-                </div>
-              </div>			  
+				@if($rtemplate['features']->count() == 0)
+					@foreach($rtemplate['features'] as $ft)				
+						<div class="d-flex align-items-start"><span class="flaticon-weath"></span>
+							<div class="flex-1">
+							   <h5>{{$ft->text}}</h5>
+							   <p class="text-muted mb-4">{{$ft->body}}</p>
+							</div>
+						</div>		
+					@endforeach
+				@else			
+				  <div class="d-flex align-items-start"><span class="flaticon-accountant"></span>
+					<div class="flex-1">
+					  <h5>Accounting</h5>
+					  <p class="text-muted mb-4">Beside the support we provide you with various tools to be able to host and manage your websites</p>
+					</div>
+				  </div>
+				  <div class="d-flex align-items-start"><span class="flaticon-accounting-1"></span>
+					<div class="flex-1">
+					  <h5>Tax, Compliance & Payroll</h5>
+					  <p class="text-muted mb-4">Be able to customize your plan over time if needed so you pay only for what you use</p>
+					</div>
+				  </div>
+				  <div class="d-flex align-items-start"><span class="flaticon-wealth"></span>
+					<div class="flex-1">
+					  <h5>Financial Services</h5>
+					  <p class="text-muted mb-4">We are the most reliable service provider, ready to give you a helping hand the fastest way possible 24/7</p>
+					</div>
+				  </div>
+				  <div class="d-flex align-items-start"><span class="flaticon-teamwork"></span>
+					<div class="flex-1">
+					  <h5>Investment Portfolio</h5>
+					  <p class="text-muted mb-4">Beside the support we provide you with various tools to be able to host and manage your websites</p>
+					</div>
+				  </div>
+				  <div class="d-flex align-items-start"><span class="flaticon-budget"></span>
+					<div class="flex-1">
+					  <h5>Growth &amp Funding Access</h5>
+					  <p class="text-muted mb-4">Be able to customize your plan over time if needed so you pay only for what you use</p>
+					</div>
+				  </div>
+				@endif
             </div>
           </div>
         </div>
@@ -177,11 +203,16 @@
 						</div> <!-- end of col -->
 						<div class="col-lg-6 col-xl-5">
 							<div class="text-container">
-								<h2>Consult With Our Top Professional Accounting Advisors</h2>
-								<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
-									Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
-								</p>
-								<a class="btn btn-primary btn-fs" href="#">Get Guote</a>
+								@if($rtemplate['banners']->count() == 0)
+									<h2>{{$rtemplate['banners'][0]->heading}}</h2>
+									<p>{{$rtemplate['banners'][0]->body}}</p>	
+								@else							
+									<h2>Consult With Our Top Professional Accounting Advisors</h2>
+									<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
+										Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
+									</p>
+								@endif
+								<a class="btn btn-primary btn-fs" href="#contact">Get Guote</a>
 							</div> <!-- end of text-container -->
 						</div> <!-- end of col -->
 					</div> <!-- end of row -->
@@ -198,8 +229,12 @@
 					<div class="col-lg-6 col-xl-5">
 						<div class="text-container">
 							<h2>Some Facts About Our Achievements</h2>
-							<p>In gravida vitae nulla vitae tincidunt imperdiet ante. Pellentesque aliquet mi eu tortor dictum, non imperdiet ante viverra. Phasellus eget enim orci flig rine bilo</p>
-							
+								@if($rtemplate['banners']->count() != 0)
+									<p>{{$rtemplate['banners'][1]->body}}
+									</p>								
+								@else								
+									<p>In gravida vitae nulla vitae tincidunt imperdiet ante. Pellentesque aliquet mi eu tortor dictum, non imperdiet ante viverra. Phasellus eget enim orci flig rine bilo</p>
+								@endif
 							<!-- Counter -->
 							<div class="counter-container">
 								<div class="counter-cell">
@@ -240,68 +275,99 @@
 							<!-- Filter -->
 							<div class="button-group filters-button-group">
 								<button class="button is-checked" data-filter="*">ALL</button>
-								<button class="button" data-filter=".accounting">ACCOUNTING</button>
-								<button class="button" data-filter=".taxpayroll">TAX &amp PAYROLL</button>
-								<button class="button" data-filter=".financial">FINANCIAL</button>
-								<button class="button" data-filter=".investment">INVESTMENT</button>
-								<button class="button" data-filter=".funding">FUNDING</button>								
+									@if($rtemplate['projectTypes']->count() == 0)
+										@foreach($rtemplate['projectTypes'] as $pt)
+											<button class="button" data-filter=".$pt->name">{{$pt->name}}</button>
+										@endforeach
+									@else								
+										<button class="button" data-filter=".accounting">ACCOUNTING</button>
+										<button class="button" data-filter=".taxpayroll">TAX &amp PAYROLL</button>
+										<button class="button" data-filter=".financial">FINANCIAL</button>
+										<button class="button" data-filter=".investment">INVESTMENT</button>
+										<button class="button" data-filter=".funding">FUNDING</button>					
+									@endif
 							</div> <!-- end of button group -->
 							
 							<div class="grid projects-container">
-								<div class="col-lg-4 col-md-6 element-item taxpayroll">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p1.jpg')}}" alt="alternative">
-										<p><strong>Online banking</strong> - pellentesque tincidunt leo eu laoreedt integer quis vanos compren</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item taxpayroll">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p2.jpg')}}" alt="alternative">
-										<p><strong>Loans company</strong> - odio semper, interdum orci molestie, mattis lectus pellentesq aliqu</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item investment">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p3.jpg')}}" alt="alternative">
-										<p><strong>Refinance firm</strong> - arcu a neque congue finibus doneci malesuada et purus melan bris</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item investment taxpayroll">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p4.jpg')}}" alt="alternative">
-										<p><strong>Financial products</strong> - id aliquam ut malesuada eros utr varius blandit aliquam tinci bist</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item investment funding">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p5.jpg')}}" alt="alternative">
-										<p><strong>Credit cards</strong> - magna a feugiat cras a semper tellus in rhoncus vehicula tellus rugo</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item accounting financial">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p6.jpg')}}" alt="alternative">
-										<p><strong>Software robots</strong> - vel sodales dolor donec a est sapien integer pharetr bilom conva</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item accounting funding">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p7.jpg')}}" alt="alternative">
-										<p><strong>Company control</strong> - ut quam aliquam elemo de vestibulum fringilla porttitor vanic tres</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item accounting financial">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p8.jpg')}}" alt="alternative">
-										<p><strong>Audit reports</strong> - sed tempor, metus vel pharetra finibus, est ante hendrerit augue</p>
-									</a>
-								</div>
-								<div class="col-lg-4 col-md-6 element-item accounting financial">
-									<a href="{{config('app.url')}}/projectView/1">
-										<img class="img-fluid" src="{{asset('images/portfolio/p9.jpg')}}" alt="alternative">
-										<p><strong>Big business</strong> - aliquam semper molestie nisi, at porttitor lacus suscipit in mole richter</p>
-									</a>
-								</div>
+								@if($rtemplate['projectTypes']->count() == 0)
+									@foreach($rtemplate['projectTypes'] as $pt)
+										@if($rtemplate['projects']->count() != 0)	
+											@foreach($rtemplate['projects'] as $pj)
+												@if($pj->type == $pt->name)
+													<div class="col-lg-4 col-md-6 element-item {{$pt->name}}">
+														<a href="{{config('app.url')}}/projectView/{{$pt->id}}">
+															@if($rtemplate['projectsImages']->count() != 0)
+																@foreach($rtemplate['projectsImages'] as $pi)
+																	@if($pi->ref_class == $pj->name)
+																		<img src="{{ asset('storage/'.$pi->imagePath)}}" class="img-fluid" alt="alternative">
+																	@endif
+																@endforeach
+															@else												
+																<img class="img-fluid" src="{{asset('images/portfolio/p1.jpg')}}" alt="alternative">
+															@endif
+															<p><strong>{{$pj->name}}</strong> {{$pj->description}}</p>
+														</a>
+													</div>											  
+												@endif
+											@endforeach
+										@endif
+									@endforeach
+								@else										
+									<div class="col-lg-4 col-md-6 element-item taxpayroll">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p1.jpg')}}" alt="alternative">
+											<p><strong>Online banking</strong> - pellentesque tincidunt leo eu laoreedt integer quis vanos compren</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item taxpayroll">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p2.jpg')}}" alt="alternative">
+											<p><strong>Loans company</strong> - odio semper, interdum orci molestie, mattis lectus pellentesq aliqu</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item investment">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p3.jpg')}}" alt="alternative">
+											<p><strong>Refinance firm</strong> - arcu a neque congue finibus doneci malesuada et purus melan bris</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item investment taxpayroll">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p4.jpg')}}" alt="alternative">
+											<p><strong>Financial products</strong> - id aliquam ut malesuada eros utr varius blandit aliquam tinci bist</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item investment funding">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p5.jpg')}}" alt="alternative">
+											<p><strong>Credit cards</strong> - magna a feugiat cras a semper tellus in rhoncus vehicula tellus rugo</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item accounting financial">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p6.jpg')}}" alt="alternative">
+											<p><strong>Software robots</strong> - vel sodales dolor donec a est sapien integer pharetr bilom conva</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item accounting funding">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p7.jpg')}}" alt="alternative">
+											<p><strong>Company control</strong> - ut quam aliquam elemo de vestibulum fringilla porttitor vanic tres</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item accounting financial">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p8.jpg')}}" alt="alternative">
+											<p><strong>Audit reports</strong> - sed tempor, metus vel pharetra finibus, est ante hendrerit augue</p>
+										</a>
+									</div>
+									<div class="col-lg-4 col-md-6 element-item accounting financial">
+										<a href="{{config('app.url')}}/projectView/1">
+											<img class="img-fluid" src="{{asset('images/portfolio/p9.jpg')}}" alt="alternative">
+											<p><strong>Big business</strong> - aliquam semper molestie nisi, at porttitor lacus suscipit in mole richter</p>
+										</a>
+									</div>
+								@endif
 							</div> <!-- end of grid -->
 							<!-- end of filter -->
 							
@@ -323,7 +389,29 @@
               <p class="mb-4">Get the best financial and investment services at the price you can afford</p>
             </div>
           </div>		  
-          <div class="row ">
+          <div class="row">
+			@if($rtemplate['plans']->count() == 0)
+				@foreach($rtemplate['plans'] as $plan)
+					<div class="col-sm-6 col-xl-3 mb-3">
+					  <div class="card card-span py-4  border-top border-4 border-primary">
+						<div class="card-body">
+						  <div class="text-center"><span class="flaticon-accountant"></span>
+							<h5 class="my-3">{{$plan->name}}</h5>
+							<ul class="list-unstyled">
+							  <li>{{$plan->description}}</li>
+							</ul>
+						  </div>
+						</div>
+						<div class="border-top bg-white text-center pt-3 pb-0">
+						  <p class="mb-0">Get started at </p>
+						  <div class="d-flex justify-content-center">
+							<h3 class="fw-normal">${{$plan->cost}}</h3><span class="d-flex align-items-center">/{{$plan->duration}}</span>
+						  </div>
+						</div>
+					  </div>
+					</div>		
+				@endforeach
+			@else
             <div class="col-sm-6 col-xl-3 mb-3">
               <div class="card card-span py-4  border-top border-4 border-primary">
                 <div class="card-body">
@@ -400,6 +488,7 @@
                 </div>
               </div>
             </div>
+			@endif			
           </div>
         </div>
         <!-- end of .container-->
@@ -414,10 +503,15 @@
 					<div class="row">
 						<div class="col-lg-6 col-xl-5">
 							<div class="text-container">
-								<h2>Invest Your Capital &amp Start Earning Today</h2>
-								<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
-									Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
-								</p>
+								@if($rtemplate['banners']->count() == 0)
+									<h2>{{$rtemplate['banners'][2]->heading}}</h2>
+									<p>{{$rtemplate['banners'][2]->body}}</p>	
+								@else							
+									<h2>Invest Your Capital &amp Start Earning Today</h2>
+									<p>Maecenas fringilla quam posuere, pellentesque est nec, gravida turpis. Integer vitae mollis felis. Integer id quam id tellus hendrerit laciniad binfer
+										Sed id dui rutrum, dictum urna eu, accumsan turpis. Fusce id auctor velit, sed viverra dui rem dina
+									</p>
+								@endif
 								<a class="btn btn-primary btn-fs" href="#">Get Guote</a>
 							</div> <!-- end of text-container -->
 						</div> <!-- end of col -->
@@ -443,7 +537,22 @@
          </div>
         <div class="testimonials-slider swiper">
           <div class="swiper-wrapper">
-
+			@if($rtemplate['testimonials']->count() == 0)				
+				@foreach($rtemplate['testimonials'] as $ts)
+					<div class="swiper-slide">
+					  <div class="testimonial-item">
+						<p>
+						  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+						  {{$ts->comment}}
+						  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+						</p>
+						<img src="{{ asset('images/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
+						<h3>{{ $ts->name}}</h3>
+						<h4>{{ $ts->title}}</h4>
+					  </div>
+					</div><!-- End testimonial item -->	
+				@endforeach
+			@else
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <p>
@@ -508,7 +617,7 @@
                 <h4>Entrepreneur</h4>
               </div>
             </div><!-- End testimonial item -->
-
+			@endif
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -523,13 +632,21 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<h2 class="h2-heading"><span>Use the following form to</span><br> request a quote for our services</h2>
-							<p class="p-heading">Vel malesuada sapien condimentum nec. Fusce interdum nec urna et finibus pulvinar tortor id</p>
-							<ul class="list-unstyled li-u6">
-								<li><i class="fa fa-map-marker"></i> &nbsp;22 Praesentum, Pharetra Fin, CB 12345, KL</li>
-								<li><i class="fa fa-phone"></i> &nbsp;<a href="tel:00817202212">+81 720 2212</a></li>
-								<li><i class="fa fa-envelope"></i> &nbsp;<a href="mailto:lorem@ipsum.com">lorem@ipsum.com</a></li>
-							</ul>
+							@if($rtemplate['appDefaults']->count() == 0)	
+								<p class="p-heading">{{$rtemplate['appDefaults']->contactText}}</p>
+								<ul class="list-unstyled li-u6">
+									<li><i class="fa fa-map-marker"></i> &nbsp;22 Praesentum, Pharetra Fin, CB 12345, KL</li>
+									<li><i class="fa fa-phone"></i> &nbsp;<a href="{{$rtemplate['appDefaults']->phone}}">{{$rtemplate['appDefaults']->phone}}</a></li>
+									<li><i class="fa fa-envelope"></i> &nbsp;<a href="{{$rtemplate['appDefaults']->email}}">{{$rtemplate['appDefaults']->email}}</a></li>
+								</ul>							
+							@else
+								<p class="p-heading">Vel malesuada sapien condimentum nec. Fusce interdum nec urna et finibus pulvinar tortor id</p>
+								<ul class="list-unstyled li-u6">
+									<li><i class="fa fa-map-marker"></i> &nbsp;22 Praesentum, Pharetra Fin, CB 12345, KL</li>
+									<li><i class="fa fa-phone"></i> &nbsp;<a href="tel:00817202212">+81 720 2212</a></li>
+									<li><i class="fa fa-envelope"></i> &nbsp;<a href="mailto:lorem@ipsum.com">lorem@ipsum.com</a></li>
+								</ul>
+							@endif
 						</div> <!-- end of col -->
 					</div> <!-- end of row -->
 					<div class="row">
@@ -546,11 +663,17 @@
 								<div class="form-group">
 									<select class="form-control-select" required>
 										<option class="select-option" value="" disabled selected>Project type</option>
-										<option class="select-option" value="accounting">Accounting</option>
-										<option class="select-option" value="taxpayroll">Tax, Compliance &amp Payroll</option>
-										<option class="select-option" value="financial">Financial Services</option>
-										<option class="select-option" value="investment">Investment Portfolio</option>
-										<option class="select-option" value="funding">Growth &amp Funding Access</option>										
+										@if($rtemplate['projectTypes']->count() == 0)
+											@foreach($rtemplate['projectTypes'] as $pt)
+												<option class="select-option" value="{{$pt->name}}">{{$pt->name}}</option>
+											@endforeach
+										@else
+											<option class="select-option" value="accounting">Accounting</option>
+											<option class="select-option" value="taxpayroll">Tax, Compliance &amp Payroll</option>
+											<option class="select-option" value="financial">Financial Services</option>
+											<option class="select-option" value="investment">Investment Portfolio</option>
+											<option class="select-option" value="funding">Growth &amp Funding Access</option>
+										@endif										
 									</select>
 								</div>
 								<div class="form-group">
@@ -579,6 +702,11 @@
                <!--Client logo-->
 			   <div class="row align-items-center justify-content-xl-between py-5 border-klean">
 				   <div id="carousel-our-clients" class="owl-carousel text-center margin-top-20">
+					@if($rtemplate['carouselImages']->count() > 5)
+						@foreach($rtemplate['carouselImages'] as $ci)	
+							<div class="our-clients"> <a href="#"> <img src="{{ asset('storage/'.$ci->imagePath)}}" height="40" alt="" /> </a> </div>
+						@endforeach			   
+					@else					   
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/robinhood.png') }}" height="40" alt="" /> </a> </div>
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/reddit.png') }}" height="40" alt="" /> </a> </div>
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/upcase.png') }}"  height="40" alt="" /> </a> </div>	  
@@ -589,6 +717,7 @@
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/upcase.png') }}"  height="40" alt="" /> </a> </div>
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/hubspot.png') }}"  height="40" alt="" /> </a> </div>
 					  <div class="our-clients"> <a href="#"> <img src="{{ asset('images/gallery/tunein.png') }}"  height="40" alt="" /> </a> </div>
+					@endif
 				   </div>
 				</div>
                <!--/Client logo--> 
